@@ -7,7 +7,7 @@ public class MouseRayHandler : MonoBehaviour
     
     private Ray _ray;
 
-    public event Action CubeChanged;
+    public event Action<Cube> CubeChanged;
 
     private void Update()
     {
@@ -21,9 +21,8 @@ public class MouseRayHandler : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown(0))
                 {
-                    Destroy(hit.collider.gameObject);
-                    CubeChanged?.Invoke();
-                    Debug.Log("Oy eee");
+                    Cube hittedCube = hit.collider.gameObject.GetComponent<Cube>();
+                    CubeChanged?.Invoke(hittedCube);
                 }
             }
         }
