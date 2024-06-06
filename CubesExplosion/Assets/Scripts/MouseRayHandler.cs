@@ -13,7 +13,6 @@ public class MouseRayHandler : MonoBehaviour
     {
         _ray = _camera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        Debug.DrawRay(_ray.origin, _ray.direction *100f, Color.magenta);
 
         if (Physics.Raycast(_ray, out hit, Mathf.Infinity))
         {

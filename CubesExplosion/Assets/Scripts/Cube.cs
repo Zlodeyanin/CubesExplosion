@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    public int ShareChanse { get; private set; } = 100;
+    public float ShareChanse { get; private set; }
 
-    public void ReduceShareChanse()
+    private void FixedUpdate()
     {
-        ShareChanse /= 2;
+        ShareChanse = gameObject.transform.localScale.x;
     }
 }
