@@ -16,11 +16,10 @@ public class MouseRayHandler : MonoBehaviour
 
         if (Physics.Raycast(_ray, out hit, Mathf.Infinity))
         {
-            if (hit.collider.gameObject.GetComponent<Cube>())
+            if (hit.collider.gameObject.TryGetComponent<Cube>(out Cube hittedCube))
             {
                 if (Input.GetMouseButtonDown(0))
-                {
-                    Cube hittedCube = hit.collider.gameObject.GetComponent<Cube>();
+                {   
                     CubeChanged?.Invoke(hittedCube);
                 }
             }

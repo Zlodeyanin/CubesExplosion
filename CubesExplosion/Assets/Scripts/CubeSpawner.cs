@@ -4,7 +4,8 @@ using Random = UnityEngine.Random;
 public class CubeSpawner : MonoBehaviour
 {
     [SerializeField] private MouseRayHandler _handler;
-    [SerializeField] private CubesDetonator _cubesDetonator;
+
+    private CubesDetonator _cubesDetonator;
 
     private void OnEnable()
     {
@@ -26,8 +27,8 @@ public class CubeSpawner : MonoBehaviour
         {
             for (int i = 0; i < count; i++)
             {
-                GameObject newCube = Instantiate(hittedCube.gameObject);
-                newCube.GetComponent<MeshRenderer>().material.color = new Color(Random.Range(0.0f, 1f), Random.Range(0.0f, 1f), Random.Range(0.0f, 1f));
+                MeshRenderer newCube = Instantiate(hittedCube.GetComponent<MeshRenderer>());
+                newCube.material.color = new Color(Random.Range(0.0f, 1f), Random.Range(0.0f, 1f), Random.Range(0.0f, 1f));
                 newCube.transform.localScale = newCube.transform.localScale / 2;
                 Destroy(hittedCube.gameObject);
             }
